@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FS RAG Design System - Teal to Purple gradient theme */
+    --background: 200 25% 15%;
+    --foreground: 210 40% 98%;
+
+    --card: 200 20% 20%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 200 20% 18%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 180 40% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 260 30% 35%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 200 15% 25%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 280 35% 45%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 15% 30%;
+    --input: 200 15% 25%;
+    --ring: 180 40% 45%;
+
+    --radius: 1rem;
+
+    /* Custom colors for FS RAG */
+    --gradient-start: 190 45% 25%;
+    --gradient-mid: 240 35% 30%;
+    --gradient-end: 280 40% 25%;
+    
+    --glass-bg: 200 20% 95%;
+    --glass-border: 200 20% 85%;
+    
+    --feature-card-bg: 220 15% 85%;
+    --feature-card-text: 220 30% 20%;
+    
+    --nav-active: 30 30% 90%;
+    --nav-inactive: 200 15% 80%;
+
+    --sidebar-background: 200 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 40% 45%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 200 15% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 200 15% 25%;
+    --sidebar-ring: 180 40% 45%;
+  }
+
+  .dark {
+    --background: 200 25% 15%;
+    --foreground: 210 40% 98%;
+    --card: 200 20% 20%;
+    --card-foreground: 210 40% 98%;
+    --popover: 200 20% 18%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 180 40% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 260 30% 35%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 200 15% 25%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 280 35% 45%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 200 15% 30%;
+    --input: 200 15% 25%;
+    --ring: 180 40% 45%;
+    --sidebar-background: 200 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 40% 45%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 200 15% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 200 15% 25%;
+    --sidebar-ring: 180 40% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Main gradient background */
+  .gradient-bg {
+    background: linear-gradient(
+      180deg,
+      hsl(190, 45%, 25%) 0%,
+      hsl(220, 35%, 25%) 50%,
+      hsl(260, 40%, 22%) 100%
+    );
+  }
+
+  /* Glass morphism effect for cards */
+  .glass-card {
+    background: hsl(var(--glass-bg) / 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  /* Feature card styling */
+  .feature-card {
+    background: hsl(var(--feature-card-bg));
+    color: hsl(var(--feature-card-text));
+  }
+
+  /* Chat bubble styles */
+  .chat-bubble-user {
+    background: hsl(200 20% 30% / 0.8);
+    color: hsl(var(--foreground));
+  }
+
+  .chat-bubble-assistant {
+    background: hsl(var(--glass-bg) / 0.95);
+    color: hsl(var(--feature-card-text));
+  }
+
+  /* Bottom navigation */
+  .nav-item-active {
+    background: hsl(var(--nav-active));
+    color: hsl(220, 30%, 20%);
+  }
+
+  .nav-item-inactive {
+    background: hsl(var(--nav-inactive) / 0.5);
+    color: hsl(220, 20%, 40%);
+  }
+
+  /* Input with glass effect */
+  .glass-input {
+    background: hsl(var(--glass-bg) / 0.9);
+    border: 1px solid hsl(var(--glass-border));
+    color: hsl(var(--feature-card-text));
+  }
+
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 2px;
+  }
+
+  /* Shimmer loading effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted-foreground) / 0.3) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  /* Slide up animation */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+}
